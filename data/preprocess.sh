@@ -6,7 +6,7 @@ wget --output-document=icews14/test.txt https://raw.githubusercontent.com/nle-ml
 mkdir icews05-15
 wget --output-document=icews05-15/train.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/icews05-15/icews_2005-2015_train.txt
 wget --output-document=icews05-15/valid.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/icews05-15/icews_2005-2015_valid.txt
-wget --output-document=icews05-15/test.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/icews05-15/icews_2005-2015_testtxt
+wget --output-document=icews05-15/test.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/icews05-15/icews_2005-2015_test.txt
 
 mkdir wikidata11k
 wget --output-document=wikidata11k/train.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/wikidata/wiki_train.txt
