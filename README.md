@@ -27,6 +27,8 @@ The experimental results of the trained model are as follows:
 |:------:|:--------:|:--------:|:---------:|
 |0.610|50.7|67.7|79.0|
 
+Note that we have used 1 Tesla V100 GPU for all experiments.
+
 ## Training
 We provide additional scripts for each dataset that trains T-GAP with the same hyperparameter configurations as used in the paper.
 The scripts can be run as follows: 
