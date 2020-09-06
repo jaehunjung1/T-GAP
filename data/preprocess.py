@@ -24,8 +24,8 @@ for dataset in dataset_list:
 
 
 # wikidata
+print("Processing Wikidata")
 for filename in file_list:
-    print("Processing Wikidata")
     with open(os.path.join("wikidata11k", filename), 'r') as f:
         lines = f.read().lower().splitlines()
         split_lines = map(lambda x: x.split("\t"), lines)
