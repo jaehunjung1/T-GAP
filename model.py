@@ -57,9 +57,6 @@ class TGAP(nn.Module):
         self.attn_present_lin = nn.Linear(args.node_dim, args.node_dim)
         self.attn_future_lin =  nn.Linear(args.node_dim, args.node_dim)
 
-        # TODO remove
-        # self.gat_att_dropout = nn.Dropout(self.args.dropout // 2)
-        # self.gat_inf_dropout = nn.Dropout(self.args.dropout)
 
     def forward(self, batch):
         batch_size = batch["head"].size(0)
@@ -179,8 +176,6 @@ class TGAP(nn.Module):
             subgraph.edata['a_GAT'] = edge_softmax(subgraph, attn_j_incoming)
             subgraph.update_all(self.incoming_msg_func, fn.sum('m', 'g_n'))
 
-            # TODO
-            # subgraph.ndata['g_n'] = self.gat_inf_dropout(subgraph.ndata['g_n'].view(-1, self.args.node_dim))
             subgraph.ndata['g_n'] = subgraph.ndata['g_n'].view(-1, self.args.node_dim)
             subgraph.ndata['g_n'] += subgraph.ndata['a'].mean(1, keepdim=True) * self.W_h(subgraph.ndata['h_n'])
             subgraph.ndata['g_n'] = F.leaky_relu(subgraph.ndata['g_n'])

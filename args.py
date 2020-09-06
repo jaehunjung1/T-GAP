@@ -29,6 +29,7 @@ def get_args():
     args.add_argument('--patience', default=3, type=int, help="ReduceLROnPlateau patience.")
 
     args.add_argument('--node_dim', default=100, type=int, help="Node embedding size.")
+    args.add_argument('--gamma', default=0.5, type=float)
     args.add_argument('--num_in_heads', default=5, type=int, help="Number of heads for PGNN, SGNN")
     args.add_argument('--num_out_heads', default=5, type=int, help="Number of heads for Attention Flow")
     args.add_argument('--num_step', default=3, type=int, help="Number of propagation steps.")
