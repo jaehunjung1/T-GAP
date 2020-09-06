@@ -74,6 +74,7 @@ python main.py \
 
 ## Evaluation
 You can evaluate a trained model, using Mean Reciprocal Rank (MRR), Hits@1/3/10 on the test set.
+
 For evaluation, you need to locate the checkpoint file generated during training.
 To the same command used in the training, add `--test` and `--ckpt=${CKPT_DIR}` to evaluate.
 
