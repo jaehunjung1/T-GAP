@@ -20,7 +20,7 @@ The script downloads, and pre-processes the official distribution of the 3 publi
 We also provide the version of T-GAP trained on **ICEWS14** dataset. The model file can be found at `results/checkpoint/icews14.ckpt`.
 
 ## Simple Demo
-You can run a demo script with a trained model by `sh scripts/demo.sh`.
+You can run a demo script to evaluate the trained model on ICEWS14, by running `sh scripts/demo.sh`.
 The experimental results of the trained model are as follows:
 
 |**MRR**|**Hits@1**|**Hits@3**|**Hits@10**|
@@ -69,6 +69,18 @@ python main.py \
 |`num_step`| Number of propagation steps | 3 |
 |`num_sample_from`| Number of core nodes | 10 |
 |`max_num_neighbor`| Number of sampled / added edges | 100 |
+
+## Evaluation
+You can evaluate a trained model, using Mean Reciprocal Rank (MRR), Hits@1/3/10 on the test set.
+For evaluation, you need to locate the checkpoint file generated during training.
+To the same command used in the training, add `--test` and `--ckpt=${CKPT_DIR}` to evaluate.
+
+```shell
+python main.py
+  --test \
+  --ckpt=${CKPT_DIR} \
+  --other_options (Same configuration with training)
+```
 
 
 ## References
