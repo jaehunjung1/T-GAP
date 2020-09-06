@@ -22,7 +22,7 @@ def get_args():
     args.add_argument('--dataset', default="data/icews14_aug", type=str, help="Dataset directory.")
     args.add_argument('--test', action='store_true', help="Inference mode.")
     args.add_argument('--ckpt', default='', help="Checkpoint file name.")
-    args.add_argument('--epoch', default=20, type=int, help="Number of training epochs.")
+    args.add_argument('--epoch', default=10, type=int, help="Number of training epochs.")
     args.add_argument('--batch_size', default=16, type=int, help="Batch size.")
     args.add_argument('--lr', default=5e-4, type=float, help="Learning rate.")
     args.add_argument('--grad_clip', default=3, type=int, help="Gradient clip size.")

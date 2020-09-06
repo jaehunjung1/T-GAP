@@ -15,17 +15,17 @@ You can install the requirements using `pip install -r requirements.txt`.
 ## Datasets, Pre-processing, and Pretrained Model
 We provide a shell script to download the datasets and pre-process them. The datasets used in the paper are **ICEWS14**, **ICEWS05-15**, and **Wikidata11k**.
 Go to the `data` folder, and type `sh preprocess.sh`.
-The script downloads, and pre-processes the official distribution of the 3 public datasets provided by [Garcia-Duran et al](https://github.com/nle-ml/mmkb).
+The script downloads, and pre-processes the official distribution of the 3 public datasets provided by [Garcia-Duran et al](https://github.com/nle-ml/mmkb/tree/master/TemporalKGs).
 
 We also provide the version of T-GAP trained on **ICEWS14** dataset. The model file can be found at `results/checkpoint/icews14.ckpt`.
 
 ## Simple Demo
-You can run a demo script to evaluate the trained model on ICEWS14, by running `sh scripts/demo.sh`.
+You can run a demo script to evaluate the trained model on ICEWS14, by running `sh scripts/demo.sh` in the project root.
 The experimental results of the trained model are as follows:
 
 |**MRR**|**Hits@1**|**Hits@3**|**Hits@10**|
 |:------:|:--------:|:--------:|:---------:|
-|0.610|50.7|67.7|79.0|
+|0.610|50.9|67.7|79.0|
 
 Note that we have used 1 Tesla V100 GPU for all experiments.
 
@@ -62,7 +62,7 @@ python main.py \
 |`dataset`| Dataset to train (among `data/icews14_aug`, `data/icews05-15_aug`, `data/wikidata11k_aug`) | `data/icews14_aug`|
 |`device`| Torch device to use (`cuda` or `cpu`) | `cuda`|
 |`seed`| Random seed | 999 |
-|`epoch`| Number of training epochs | 20 |
+|`epoch`| Number of training epochs | 10 |
 |`lr` | Learning Rate | 5e-4 |
 |`grad_clip`| Gradient clipping norm | 3 |
 |`node_dim`| Embedding dimension | 100 |
