@@ -13,3 +13,4 @@ wget --output-document=wikidata11k/train.txt https://raw.githubusercontent.com/n
 wget --output-document=wikidata11k/valid.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/wikidata/wiki_valid.txt
 wget --output-document=wikidata11k/test.txt https://raw.githubusercontent.com/nle-ml/mmkb/master/TemporalKGs/wikidata/wiki_test.txt
 
+python preprocess.py
