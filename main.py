@@ -36,11 +36,17 @@ def train_one_epoch(model, dataloader, optimizer, args, epoch, global_count, wri
             # Compute loss
             loss = F.nll_loss(torch.log(predicted_prob + 1e-12), batch["tail"])
 
-            optimizer.zero_grad()
-            loss.backward()
-            nn.utils.clip_grad_norm_(model.parameters(), args.grad_clip)
-            optimizer.step()
-            loss = loss.item()
+            if args.dataset == 'data/wikidata11k_aug':
+                if epoch_count % 16 == 0:
+                    nn.utils.clip_grad_norm_(model.parameters(), args.grad_clip)
+                    optimizer.step()
+                    optimizer.zero_grad()
+            else:
+                optimizer.zero_grad()
+                loss.backward()
+                nn.utils.clip_grad_norm_(model.parameters(), args.grad_clip)
+                optimizer.step()
+                loss = loss.item()
 
             if loss != loss:
                 print(f"Nan came up at epoch {epoch}")
@@ -59,15 +65,27 @@ def train_one_epoch(model, dataloader, optimizer, args, epoch, global_count, wri
             avg_hits3 = epoch_correct3 / epoch_count
             avg_hits10 = epoch_correct10 / epoch_count
 
-            tq.set_postfix({'Avg loss': avg_loss}, refresh=False)
-            writer.add_scalar('Loss/Train_Avg_Loss', avg_loss,
-                              global_step=global_count+epoch_count)
-            writer.add_scalar('Metric/Train_hits@1', avg_hits1,
-                              global_step=global_count+epoch_count)
-            writer.add_scalar('Metric/Train_hits@3', avg_hits3,
-                              global_step=global_count+epoch_count)
-            writer.add_scalar('Metric/Train_hits@10', avg_hits10,
-                              global_step=global_count + epoch_count)
+            if args.dataset == 'data/wikidata11k_aug':
+                if epoch_count % 16 == 0:
+                    tq.set_postfix({'Avg loss': avg_loss}, refresh=False)
+                    writer.add_scalar('Loss/Train_Avg_Loss', avg_loss,
+                                      global_step=global_count+epoch_count)
+                    writer.add_scalar('Metric/Train_hits@1', avg_hits1,
+                                      global_step=global_count+epoch_count)
+                    writer.add_scalar('Metric/Train_hits@3', avg_hits3,
+                                      global_step=global_count+epoch_count)
+                    writer.add_scalar('Metric/Train_hits@10', avg_hits10,
+                                      global_step=global_count + epoch_count)
+            else:
+                tq.set_postfix({'Avg loss': avg_loss}, refresh=False)
+                writer.add_scalar('Loss/Train_Avg_Loss', avg_loss,
+                                  global_step=global_count + epoch_count)
+                writer.add_scalar('Metric/Train_hits@1', avg_hits1,
+                                  global_step=global_count + epoch_count)
+                writer.add_scalar('Metric/Train_hits@3', avg_hits3,
+                                  global_step=global_count + epoch_count)
+                writer.add_scalar('Metric/Train_hits@10', avg_hits10,
+                                  global_step=global_count + epoch_count)
 
     return epoch_count
 
