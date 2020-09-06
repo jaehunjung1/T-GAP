@@ -17,10 +17,10 @@ We provide a shell script to download the datasets and pre-process them. The dat
 Go to the `data` folder, and type `sh preprocess.sh`.
 The script downloads, and pre-processes the official distribution of the 3 public datasets provided by [Garcia-Duran et al](https://github.com/nle-ml/mmkb/tree/master/TemporalKGs).
 
-We also provide the version of T-GAP trained on **ICEWS14** dataset. The model file can be found at `results/checkpoint/icews14.ckpt`.
+We also provide the version of T-GAP trained on **ICEWS14** dataset. The checkpoint file can be found at `results/checkpoint/trained.tar`.
 
 ## Simple Demo
-You can run a demo script to evaluate the trained model on ICEWS14, by running `sh scripts/demo.sh` in the project root.
+You can run a demo script to evaluate the trained model on ICEWS14, by running `sh scripts/demo.sh` in the project root.  
 The experimental results of the trained model are as follows:
 
 |**MRR**|**Hits@1**|**Hits@3**|**Hits@10**|
@@ -73,8 +73,7 @@ python main.py \
 |`max_num_neighbor`| Number of sampled / added edges | 100 |
 
 ## Evaluation
-You can evaluate a trained model, using Mean Reciprocal Rank (MRR), Hits@1/3/10 on the test set.
-
+You can evaluate a trained model, using Mean Reciprocal Rank (MRR), Hits@1/3/10 on the test set.  
 For evaluation, you need to locate the checkpoint file generated during training.
 To the same command used in the training, add `--test` and `--ckpt=${CKPT_DIR}` to evaluate.
 
