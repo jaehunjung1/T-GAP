@@ -17,7 +17,7 @@ We provide a shell script to download the datasets and pre-process them. The dat
 Go to the `data` folder, and type `sh preprocess.sh`.
 The script downloads, and pre-processes the official distribution of the 3 public datasets provided by [Garcia-Duran et al](https://github.com/nle-ml/mmkb/tree/master/TemporalKGs).
 
-We also provide the version of T-GAP trained on **ICEWS14** dataset. The checkpoint file can be found at `results/checkpoint/trained.tar`.
+We also provide the version of T-GAP trained on **ICEWS14** dataset. The checkpoint file can be found at `results/checkpoint/trained_icews14.tar`.
 
 ## Simple Demo
 You can run a demo script to evaluate the trained model on ICEWS14, by running `sh scripts/demo.sh` in the project root.  
