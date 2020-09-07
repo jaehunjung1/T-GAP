@@ -1,6 +1,6 @@
 # T-GAP
 
-This is an official implementation of **T-GAP: Learning to Walk across Time for Temporal Knowledge Graph Completion** (submitted to AAAI2020).
+This is an official implementation of **T-GAP: Learning to Walk across Time for Temporal Knowledge Graph Completion** (submitted to AAAI2021).
 
 ## Requirements
 * python >= 3.7
